@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hosteam</title>
+  <link rel="icon" type="image/png" href="img/foto.png">
+  <link rel="stylesheet" type="text/css" href="css/style-desktop++.css" media="screen"/>
+  <link rel="stylesheet" type="text/css" href="css/style-desktop.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/style-Tablet.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/Style-mobile.css" media="screen" />
+  <script src="java_script/script.js" type="text/javascript"></script>
+  <script src="java_script/script_acess.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+  
+  <div class="divmax">
+  <div class="top-bar">
+    <span id="welcome-message"></span>
+    <button id="logout-button" style="margin-left: 1px; margin-bottom: 10px;"><img src="img/saida2.png" style="width: 12px; height: 10px;" class="img-saida"></button>
+   
+  </div>
+
+  
+  
+  <div class="menuprincipal">
+    
+    <div class="logo">
+      <a href="index.html"><img src="img/logo.png" alt="logo" style="width: 215px;
+    height: 70px;" id="logo-invert"></a>
+    </div>
+    
+    <nav>
+      <div class="menu-toggle" id="menuToggle">☰</div>
+      <ul class="menu" id="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hospedagem.html">Hospedagens</a></li>
+        <li>
+          <a>Estações</a>
+          <ul class="submenu" style="background-color:#001836;">
+            <li><a href="verao.html" >Verão</a></li>
+            <li><a href="primavera.html">Primavera</a></li>
+            <li><a href="outono.html">Outono</a></li>
+            <li><a href="inverno.html">Inverno</a></li>
+          </ul>
+        </li>
+        <li><a href="pags.html">Ofertas</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><button id="toggleDarkMode">🌙</button></li>
+      </ul>
+    </nav>
+    
+    
+
+  </div>
+
+  <div class="banner">
+
+    <form class="booking-form" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label for="destino">Destino</label>
+        <input type="text" id="destino" placeholder="Ex: Salvador" required>
+      </div>
+
+      <div class="form-group">
+        <label for="checkin">Check-in</label>
+        <input type="date" id="checkin" required>
+      </div>
+
+      <div class="form-group">
+        <label for="checkout">Check-out</label>
+        <input type="date" id="checkout" required>
+      </div>
+
+      <div class="form-group dropdown-container">
+        <label></label>
+        <div class="dropdown-input" onclick="toggleDropdown()" id="dropdownToggle" >1 Adulto · 1 quarto · 1 Criança
+        </div>
+        <div class="dropdown-box" id="dropdownBox">
+          <div class="counter">
+            <span>Adulto</span>
+            <button type="button" onclick="update('hospedes',-1)">-</button>
+            <span id="hospedesCount"> 1</span>
+            <button type="button" onclick="update('hospedes',1)">+</button>
+          </div>
+          <div class="counter">
+            <span>Crianças</span>
+            <button type="button" onclick="update('criancas', -1)">-</button>
+            <span id="criancasCount"> 0</span>
+            <button type="button" onclick="update('criancas', 1)">+</button>
+          </div>
+          <div class="counter">
+            <span>Quartos</span>
+            <button type="button" onclick="update('quartos', -1)">-</button>
+            <span id="quartosCount"> 1</span>
+            <button type="button" onclick="update('quartos', 1)">+</button>
+          </div>
+
+          <div class="dropdown-actions">
+            <button type="button" class="btn-limpar" onclick="limparCampos()">Limpar</button>
+            <button type="button" class="btn-aplicar" onclick="aplicarSelecao()">Aplicar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" style="flex: 0 0 auto;">
+        <button type="submit" class="submit-btn">Pesquisar</button>
+      </div>
+    </form>
+
+
+  </div>
+
+    
+
+        <div id="div12quartos">
+          <div class="filtro-container">
+            <h3 id="titulo_filtros">Filtrar Hospedagem</h3>
+          
+            <div class="filtro-section">
+              <h4>Comodidades</h4>
+              <div class="checkbox-group">
+                <label class="label_quarto"><input class="input2" type="checkbox" name="cafe">Café da manhã incluso</label>
+                <label><input class="input2" type="checkbox" name="wifi" >Wi-Fi gratuito</label>
+                <label><input class="input2" type="checkbox" name="estacionamento">Estacionamento</label>
+                <label><input class="input2" type="checkbox" name="piscina">Piscina</label>
+                <label><input class="input2" type="checkbox" name="ar">Ar-condicionado</label>
+              </div>
+            </div>
+          
+            <div class="filtro-section">
+              <h4>Localização</h4>
+              <div class="checkbox-group">
+                <label><input class="input2" type="checkbox" name="praia">Vista para a praia</label>
+                <label><input class="input2" type="checkbox" name="centro">Próximo ao centro</label>
+                <label><input class="input2" type="checkbox" name="natureza">Área cercada</label>
+              </div>
+            </div>
+          
+            <div class="filtro-section">
+              <h4>Tipo de Acomodação</h4>
+              <div class="checkbox-group">
+                <label><input class="input2" type="checkbox" name="suite">Suíte com ar</label>
+                <label><input class="input2" type="checkbox" name="suite">Suíte com banheira</label>
+                <label><input class="input2" type="checkbox" name="chalé">Chalé rústico</label>
+                <label><input class="input2" type="checkbox" name="familiar">Quarto familiar</label>
+              </div>
+            </div>
+
+            <div class="filtro-section">
+              <h4>Alimentação</h4>
+              <div class="checkbox-group">
+                <label><input class="input2" type="checkbox" name="suite">Café da Manhã</label>
+                <label><input class="input2" type="checkbox" name="suite">Open Bar</label>
+                <label><input class="input2" type="checkbox" name="chalé">Almoço</label>
+                <label><input class="input2" type="checkbox" name="familiar">All incluse</label>
+              </div>
+            </div>
+          
+            <button class="filtro-btn">Aplicar Filtros</button>
+          </div>
+    
+          
+ </div>
+
+          <div class="div13">
+
+            <div class="div15">
+              <div id="imgquartos">
+                <a href="galeria.html"><img src="img/quarto1.jpg" class="img_quartos2"></a>
+              </div>
+              <div id="escrevequartos">
+                <a href="galeria.html"><p id="titlenota"> Pousada Céu Azul</p></a>
+                <p id="textprincipalnota"> Simplicidade e conforto andam juntos aqui. O quarto econômico oferece tudo que você precisa para uma estadia prática e aconchegante, com excelente custo-benefício.</p>
+                <div id="nota"><a href="galeria.html"><p id="textonota">Conhecer</p></a></div>
+              </div>
+            </div><br>
+            <div class="div16">
+              <div id="imgquartos">
+                <a href="galeria.html"><img src="img/quarto2.jpg" class="img_quartos2"></a>
+              </div>
+              <div id="escrevequartos">
+                <a href="galeria.html"><p id="titlenota"> Pousada Santo Cristo</p></a>
+                <p id="textprincipalnota">Relaxe em grande estilo nesta suíte exclusiva, iluminação suave e enxoval premium. Uma experiência de hospedagem memorável.</p>
+                <div id="nota"><a href="galeria.html"><p id="textonota">Conhecer</p></a></div>
+              </div>
+            </div><br>
+            <div class="div17">
+              <div id="imgquartos">
+                <a href="galeria.html"><img src="img/quarto3.jpg" class="img_quartos2"></a>
+              </div>
+              <div id="escrevequartos">
+                <a href="galeria.html"><p id="titlenota"> Hostel Saint Lama</p></a>
+                <p id="textprincipalnota"> Desperte todos os dias com o som das ondas e uma vista deslumbrante do mar. A suíte conta com varanda privativa, ar-condicionado e cama king-size para seu total conforto.</p>
+                <div id="nota"><a href="galeria.html"><p id="textonota">Conhecer</p></a></div>
+              </div>
+            </div><br>
+            <div class="div18">
+              <div id="imgquartos">
+                <a href="galeria.html"><img src="img/quato4.jpg" class="img_quartos2"></a>
+              </div>
+              <div id="escrevequartos">
+                <a href="galeria.html"><p id="titlenota"> Pousada Big Dreams</p></a>
+                <p id="textprincipalnota"> Desfrute de conforto e elegância em um quarto com cama king-size, hidromassagem e uma varanda com vista incrível para o mar. Perfeito para momentos a dois.</p>
+                <div id="nota"><a href="galeria.html"><p id="textonota">Conhecer</p></a></div>
+              </div>
+            </div><br>
+            <div class="div19">
+              <div id="imgquartos">
+                <a href="galeria.html"><img src="img/quato5.jpg" class="img_quartos2"></a>
+              </div>
+              <div id="escrevequartos">
+                <a href="galeria.html"><p id="titlenota"> hotel Frente Bela</p></a>
+                <p id="textprincipalnota"> Perfeito para casais, este chalé oferece um ambiente intimista, com lareira, decoração rústica e banheira de hidromassagem. Ideal para momentos a dois inesquecíveis.</p>
+                <div id="nota"><a href="galeria.html"><p id="textonota">Conhecer</p></a></div>
+              </div>
+            </div><br>
+            
+            
+          
+            
+          </div>
+          
+          <div class="rodape" id="rodape2">
+
+            <div class="footer-container">
+              <div class="footer-info">
+                <h2>Hosteam </h2>
+                <p>Sua melhor escolha para estadias inesquecíveis.</p>
+                <p>Rua Paris, 84 - Rio de janeiro</p>
+                <p>Rio de Janeiro, Rj - CEP 00000-000</p>
+                <p>contato@hospteam.com.br</p>
+              </div>
+        
+              <div class="social-icons">
+                <a href="#" aria-label="Facebook">
+                  <svg viewBox="0 0 24 24"><path d="M22 12.07C22 6.51 17.52 2 12 2S2 6.51 2 12.07C2 17.08 5.66 21.22 10.44 21.95v-6.18H7.9v-2.7h2.54V11.2c0-2.5 1.5-3.89 3.8-3.89 1.1 0 2.24.2 2.24.2v2.45H15.3c-1.25 0-1.64.78-1.64 1.57v1.89h2.8l-.45 2.7h-2.35v6.18C18.34 21.22 22 17.08 22 12.07z"/></svg>
+                </a>
+                <a href="#" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm4.5-2a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/></svg>
+                </a>
+                <a href="#" aria-label="Twitter">
+                  <svg viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.24 4.24 0 0 0 1.86-2.34c-.81.48-1.7.82-2.65 1A4.22 4.22 0 0 0 16 4a4.22 4.22 0 0 0-4.2 4.2c0 .33.04.65.11.96-3.5-.17-6.6-1.85-8.67-4.38a4.22 4.22 0 0 0-.57 2.12 4.2 4.2 0 0 0 1.87 3.5 4.26 4.26 0 0 1-1.9-.52v.05a4.2 4.2 0 0 0 3.37 4.12c-.45.13-.92.2-1.4.2-.34 0-.67-.03-1-.09a4.2 4.2 0 0 0 3.92 2.9A8.48 8.48 0 0 1 2 19.54a11.94 11.94 0 0 0 6.29 1.84c7.55 0 11.68-6.25 11.68-11.67 0-.18-.01-.35-.02-.53A8.37 8.37 0 0 0 22.46 6z"/></svg>
+                </a>
+              </div>
+            </div>
+           
+        
+          </div>
+        
+
+    
+    
+    <script>
+      
+      const nome = localStorage.getItem('userName');
+  const msg = document.getElementById('welcome-message');
+  const logoutButton = document.getElementById('logout-button');
+
+  if (nome) {
+    msg.textContent = `Olá, ${nome}`;
+  } else {
+    msg.textContent = '';
+    logoutButton.style.display = 'none';
+  }
+
+  logoutButton.addEventListener('click', () => {
+    localStorage.removeItem('userName');
+    window.location.href = 'login.html'; // Altere o nome do arquivo se for diferente
+  });
+
+  const menuToggle = document.getElementById("menuToggle");
+const menu = document.getElementById("menu");
+
+menuToggle.addEventListener("click", () => {
+  menu.classList.toggle("show");
+});
+
+
+
+    </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="img/foto.png">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="java_script/login.js"></script>
+    <title>Login do Usuário</title>
+</head>
+<body>
+
+
+    <div class="container">
+
+        <div class="logo">
+           <a href="index.html"> <img src="img/logo2.png" alt="Logo do Site" ></a>
+        </div>
+
+        <form id="loginForm">
+
+            <div class="input-group">
+                <input type="text" id="user-name-display" placeholder="Login" required>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="senha" placeholder="Senha" required>
+                <i class="fa-solid fa-eye toggle-password" onclick="toggleSenha('senha', this)"></i>
+            </div>
+            
+                
+            
+
+            <button type="submit">Entrar</button>
+            
+
+        </form>
+        <p>Esqueceu a senha? <a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&ifkv=ASKV5MiDZF0-wX6rclMfiwQGqPG6tn68b3D9RU21vFsjo5TaIy1JoGPp6uSvziYUtjHv8qZA2wHo&osid=1&passive=1209600&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-1842018451%3A1746971306175914">Recuperar</a></p>
+        <p id="p2" ><a id="p1" href="cadastro.html">Criar conta</a></p>
+        
+    </div>
+
+    <script>
+       document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const username = document.getElementById('user-name-display').value;
+    const senha = document.getElementById('senha').value;
+
+    // Aqui você validaria o login (pode ser com API, etc.)
+    // Suponhamos que esteja tudo certo, então:
+    localStorage.setItem('userName', username);
+
+    // Redireciona para a página principal
+    window.location.href = 'index.html';
+});
+
+      </script>
+      
+    
+</body>
+</html>

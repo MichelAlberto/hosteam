@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hosteam</title>
+  <link rel="icon" type="image/png" href="img/foto.png">
+  <link rel="stylesheet" type="text/css" href="css/style-desktop++.css" media="screen"/>
+  <link rel="stylesheet" type="text/css" href="css/style-desktop.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/style-Tablet.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/Style-mobile.css" media="screen" />
+  <script src="java_script/script.js" type="text/javascript"></script>
+  <script src="java_script/script_acess.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+  
+  <div class="divmax">
+  <div class="top-bar">
+    <span id="welcome-message"></span>
+    <button id="logout-button" style="margin-left: 1px; margin-bottom: 10px;"><img src="img/saida2.png" style="width: 12px; height: 10px;" class="img-saida"></button>
+   
+  </div>
+
+  
+  
+  <div class="menuprincipal">
+    
+    <div class="logo">
+      <a href="index.html"><img src="img/logo.png" alt="logo" style="width: 215px;
+    height: 70px;" id="logo-invert"></a>
+    </div>
+    
+    <nav>
+      <div class="menu-toggle" id="menuToggle">☰</div>
+      <ul class="menu" id="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hospedagem.html">Hospedagens</a></li>
+        <li>
+          <a>Estações</a>
+          <ul class="submenu" style="background-color:#001836;">
+            <li><a href="verao.html" >Verão</a></li>
+            <li><a href="primavera.html">Primavera</a></li>
+            <li><a href="outono.html">Outono</a></li>
+            <li><a href="inverno.html">Inverno</a></li>
+          </ul>
+        </li>
+        <li><a href="pags.html">Ofertas</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><button id="toggleDarkMode">🌙</button></li>
+      </ul>
+    </nav>
+    
+    
+
+  </div>
+
+  <div class="banner">
+
+    <form class="booking-form" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label for="destino">Destino</label>
+        <input type="text" id="destino" placeholder="Ex: Salvador" required>
+      </div>
+
+      <div class="form-group">
+        <label for="checkin">Check-in</label>
+        <input type="date" id="checkin" required>
+      </div>
+
+      <div class="form-group">
+        <label for="checkout">Check-out</label>
+        <input type="date" id="checkout" required>
+      </div>
+
+      <div class="form-group dropdown-container">
+        <label></label>
+        <div class="dropdown-input" onclick="toggleDropdown()" id="dropdownToggle" >1 Adulto · 1 quarto · 1 Criança
+        </div>
+        <div class="dropdown-box" id="dropdownBox">
+          <div class="counter">
+            <span>Adulto</span>
+            <button type="button" onclick="update('hospedes',-1)">-</button>
+            <span id="hospedesCount"> 1</span>
+            <button type="button" onclick="update('hospedes',1)">+</button>
+          </div>
+          <div class="counter">
+            <span>Crianças</span>
+            <button type="button" onclick="update('criancas', -1)">-</button>
+            <span id="criancasCount"> 0</span>
+            <button type="button" onclick="update('criancas', 1)">+</button>
+          </div>
+          <div class="counter">
+            <span>Quartos</span>
+            <button type="button" onclick="update('quartos', -1)">-</button>
+            <span id="quartosCount"> 1</span>
+            <button type="button" onclick="update('quartos', 1)">+</button>
+          </div>
+
+          <div class="dropdown-actions">
+            <button type="button" class="btn-limpar" onclick="limparCampos()">Limpar</button>
+            <button type="button" class="btn-aplicar" onclick="aplicarSelecao()">Aplicar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" style="flex: 0 0 auto;">
+        <button type="submit" class="submit-btn">Pesquisar</button>
+      </div>
+    </form>
+
+
+  </div>
+
+  <div class="titulo_estacoes"><h1> Deixe o sol guiar seus passos até destinos onde o mar refresca e a alegria é constante</h1></div>
+  <br>
+
+  <div class="flas8">
+
+   
+    <div class="oferta1"><a href="quartos.html"><img src="img/cabo_frio.jpg" alt="Description of the image" class="img3a"></a>
+      <a href="quartos.html">
+        <h3> Cumuruxatiba </h3>
+      </a>
+      <p class="p1">Venha sentir a brisa e se perder no azul do mar</p>
+      <p class="p2"> 8.2 Estrelas</p>
+    </div>
+  
+    <div class="oferta2"><a href="quartos.html"><img src="img/Canguaretama.jpg" alt="Description of the image" class="img3a"></a>
+      <a href="quartos.html">
+        <h3> Ipioca  </h3>
+      </a>
+      <p class="p1">Deixe a rotina para trás e mergulhe em tranquilidade</p>
+      <p class="p2"> 9.1 Estrelas</p>
+    </div>
+    <div class="oferta2"><a href="quartos.html"><img src="img/Florianopolis.jpg" alt="Description of the image" class="img3a"></a>
+      <a href="quartos.html">
+        <h3> Icaraí </h3>
+      </a>
+      <p class="p1">Descubra o paraíso onde o sol beija o mar.</p>
+      <p class="p2"> 8.9 Estrelas</p>
+    </div>
+
+    <div class="oferta2"><a href="quartos.html"><img src="img/Genipabu.jpg" alt="Description of the image" class="img3a"></a>
+      <a href="quartos.html">
+        <h3> Jericoacoara  </h3>
+      </a>
+      <p class="p1">Sinta a areia nos pés e a paz no coração</p>
+      <p class="p2"> 6.9 Estrelas</p>
+    </div>
+
+    <div class="oferta2"><a href="quartos.html"><img src="img/marajo.jpg" alt="Description of the image" class="img3a"></a>
+      <a href="quartos.html">
+        <h3> Paraty </h3>
+      </a>
+      <p class="p1">O som das ondas te espera, venha relaxar</p>
+      <p class="p2"> 7.9 Estrelas</p>
+    </div>
+  </div>
+  <div class="flas8">
+
+    <div class="oferta1"><a href="quartos.html"><img src="img/Ilhabela.jpg" alt="Description of the image" class="img3a"></a>
+      <a href="quartos.html">
+        <h3> Itacaré  </h3>
+      </a>
+      <p class="p1">Explore um lugar onde cada pôr do sol é um espetáculo</p>
+      <p class="p2"> 8.7 Estrelas</p>
+    </div>
+  
+    <div class="oferta2"><a href="quartos.html"><img src="img/Itaguaí.jpg" alt="Description of the image" class="img3a"></a>
+      <a href="quartos.html">
+        <h3> Trancoso  </h3>
+      </a>
+      <p class="p1">Venha viver dias dourados à beira-mar</p>
+      <p class="p2"> 9.1 Estrelas</p>
+    </div>
+    <div class="oferta2"><a href="quartos.html"><img src="img/Maranhenses.jpg" alt="Description of the image" class="img3a"></a>
+      <a href="quartos.html">
+        <h3> Maragogi </h3>
+      </a>
+      <p class="p1">Refresque a alma onde o verão nunca acaba</p>
+      <p class="p2"> 8.9 Estrelas</p>
+    </div>
+
+    <div class="oferta2"><a href="quartos.html"><img src="img/Maragogi2.jpg" alt="Description of the image" class="img3a"></a>
+      <a href="quartos.html">
+        <h3> Canoa </h3>
+      </a>
+      <p class="p1">O mar te chama, atenda esse convite</p>
+      <p class="p2"> 8.9 Estrelas</p>
+    </div>
+
+    <div class="oferta2"><a href="quartos.html"><img src="img/Morro.jpg" alt="Description of the image" class="img3a"></a>
+      <a href="quartos.html">
+        <h3> Pipa </h3>
+      </a>
+      <p class="p1">Deixe o sol te guiar até esse refúgio perfeito</p>
+      <p class="p2"> 8.9 Estrelas</p>
+    </div>
+  </div>
+  <div class="flas8">
+    <div class="oferta1"><a href="quartos.html"><img src="img/Hotel.jpg" alt="Description of the image" class="img3a"></a>
+      <a href="quartos.html">
+        <h3> Imbituba </h3>
+      </a>
+      <p class="p1">Desconecte-se e reconecte-se com o essencial: o mar</p>
+      <p class="p2"> 8.7 Estrelas</p>
+    </div>
+  
+    <div class="oferta2"><a href="quartos.html"><img src="img/porto2.jpg"Description of the image" class="img3a"></a>
+      <a href="quartos.html">
+        <h3> Saquarema</h3>
+      </a>
+      <p class="p1">Troque o concreto pela areia. Seu descanso começa aqui</p>
+      <p class="p2"> 9.1 Estrelas</p>
+    </div>
+    <div class="oferta2"><a href="quartos.html"><img src="img/Espelho.jpg" alt="Description of the image" class="img3a"></a>
+      <a href="quartos.html">
+        <h3> Ilhabela </h3>
+      </a>
+      <p class="p1">Respire fundo, relaxe e venha viver o agora</p>
+      <p class="p2"> 6.9 Estrelas</p>
+    </div>
+
+    <div class="oferta2"><a href="quartos.html"><img src="img/felix.jpg" alt="Description of the image" class="img3a"></a>
+      <a href="quartos.html">
+        <h3> Tamandaré </h3>
+      </a>
+      <p class="p1">Deixe-se levar pelas ondas da tranquilidade</p>
+      <p class="p2"> 8.1 Estrelas</p>
+    </div>
+
+    <div class="oferta2"><a href="quartos.html"><img src="img/patacho.jpg" alt="Description of the image" class="img3a"></a>
+      <a href="quartos.html">
+        <h3> Ubatuba </h3>
+      </a>
+      <p class="p1">Onde o azul do céu encontra o azul do mar</p>
+      <p class="p2"> 8.4 Estrelas</p>
+    </div>
+    
+
+  </div>
+
+
+
+
+
+
+  <div class="rodape">
+
+    <div class="footer-container">
+      <div class="footer-info">
+        <h2>Hosteam </h2>
+        <p>Sua melhor escolha para estadias inesquecíveis.</p>
+        <p>Rua Paris, 84 - Rio de janeiro</p>
+        <p>Rio de Janeiro, Rj - CEP 00000-000</p>
+        <p>contato@hospteam.com.br</p>
+      </div>
+
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M22 12.07C22 6.51 17.52 2 12 2S2 6.51 2 12.07C2 17.08 5.66 21.22 10.44 21.95v-6.18H7.9v-2.7h2.54V11.2c0-2.5 1.5-3.89 3.8-3.89 1.1 0 2.24.2 2.24.2v2.45H15.3c-1.25 0-1.64.78-1.64 1.57v1.89h2.8l-.45 2.7h-2.35v6.18C18.34 21.22 22 17.08 22 12.07z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm4.5-2a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/></svg>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <svg viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.24 4.24 0 0 0 1.86-2.34c-.81.48-1.7.82-2.65 1A4.22 4.22 0 0 0 16 4a4.22 4.22 0 0 0-4.2 4.2c0 .33.04.65.11.96-3.5-.17-6.6-1.85-8.67-4.38a4.22 4.22 0 0 0-.57 2.12 4.2 4.2 0 0 0 1.87 3.5 4.26 4.26 0 0 1-1.9-.52v.05a4.2 4.2 0 0 0 3.37 4.12c-.45.13-.92.2-1.4.2-.34 0-.67-.03-1-.09a4.2 4.2 0 0 0 3.92 2.9A8.48 8.48 0 0 1 2 19.54a11.94 11.94 0 0 0 6.29 1.84c7.55 0 11.68-6.25 11.68-11.67 0-.18-.01-.35-.02-.53A8.37 8.37 0 0 0 22.46 6z"/></svg>
+        </a>
+      </div>
+    </div>
+    
+
+  </div>
+
+  <script>
+  const nome = localStorage.getItem('userName');
+  const msg = document.getElementById('welcome-message');
+  const logoutButton = document.getElementById('logout-button');
+
+  if (nome) {
+    msg.textContent = `Olá, ${nome}`;
+  } else {
+    msg.textContent = '';
+    logoutButton.style.display = 'none';
+  }
+
+  logoutButton.addEventListener('click', () => {
+    localStorage.removeItem('userName');
+    window.location.href = 'login.html'; // Altere o nome do arquivo se for diferente
+  });
+
+  const menuToggle = document.getElementById("menuToggle");
+const menu = document.getElementById("menu");
+
+menuToggle.addEventListener("click", () => {
+  menu.classList.toggle("show");
+});
+  
+  </script>
+</div>
+</body>
+
+</html>

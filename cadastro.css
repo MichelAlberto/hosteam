@@ -1,0 +1,213 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #001b42, #f7f8fa);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Garante que o body ocupa a tela inteira */
+    margin: 0;
+}
+ 
+.container {
+    background: #ffffff;
+    padding: 20px 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 420px;
+    max-width: 100%;
+    text-align: center;
+    /* height: 600px; */ /* REMOVIDO: Altura fixa que causava transbordamento */
+    min-height: 600px; /* NOVO: Garante altura mínima, mas permite que cresça */
+    padding-bottom: 30px; /* Adiciona um padding extra para acomodar o link "Voltar" e mensagens */
+    display: flex; /* NOVO: Para organizar o conteúdo interno como flexbox */
+    flex-direction: column; /* NOVO: Organiza os itens em coluna */
+    justify-content: space-between; /* NOVO: Distribui o espaço entre os elementos (logo, form, p) */
+}
+ 
+.logo img {
+    width: 340px;
+    margin-bottom: 15px;
+    animation: fadeIn 1s ease-in-out;
+}
+ 
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* flex-grow: 1; */ /* Opcional: Faz o formulário ocupar o espaço disponível verticalmente */
+}
+ 
+.input-group {
+    flex: 0 0 100%;
+    margin-bottom: 10px;
+    position: relative;
+    /* Alinhamento para os spans de erro dentro do input-group */
+    display: flex; /* NOVO: Permite alinhar input e span */
+    flex-direction: column; /* NOVO: Empilha input e span */
+    align-items: flex-start; /* NOVO: Alinha input e span à esquerda */
+}
+ 
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+    z-index: 10; /* Garante que o ícone fique acima do input */
+}
+
+.campo-com-icone{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+
+ 
+.input-group.half {
+    flex: 0 0 48%;
+}
+ 
+input, select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    font-size: 12px;
+}
+ 
+input:focus, select:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px #4CAF50;
+    outline: none;
+}
+ 
+button {
+    width: 48%;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #080a94;
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+ 
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.02);
+}
+ 
+button:active {
+    transform: scale(0.97);
+}
+ 
+button[type="button"] {
+    background-color: #f44336;
+}
+ 
+button[type="button"]:hover {
+    background-color: #e53935;
+}
+ 
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+p {
+    font-size: 13px;
+    color: #1a1919;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 13px; /* Empurra o parágrafo 'Voltar' para o final do container */
+}
+ 
+a {
+    text-decoration: none;
+    color: #1a1919;
+}
+
+---
+/* ESTILOS PARA FEEDBACK DE MENSAGENS */
+
+/* Estilos para Mensagens de Erro de Campo (mensagem-error) */
+.mensagem-error {
+    color: #dc3545; /* Vermelho para erros */
+    font-size: 0.85em;
+    margin-top: 5px; /* Espaçamento da mensagem em relação ao input */
+    display: none; /* Escondido por padrão */
+    /* Para alinhar com o input, use width: 100%; ou ajuste conforme necessário */
+    width: 100%; /* Garante que o span ocupe a largura total do input-group */
+    text-align: left; /* Alinha o texto da mensagem à esquerda */
+    box-sizing: border-box; /* Inclui padding e border no width */
+    padding-left: 5px; /* Pequeno recuo para alinhar com o texto do input */
+}
+
+/* Certifique-se que o JavaScript adiciona 'display: block;' quando '.show' é aplicado */
+
+/* Estilos para Mensagens Gerais do Formulário (feedback-message) */
+.feedback-message {
+    padding: 10px 15px;
+    margin-bottom: 15px; /* Espaço abaixo da mensagem */
+    margin-top: 5px; /* Espaço acima da mensagem */
+    border-radius: 5px;
+    font-size: 1em;
+    text-align: center;
+    display: none; /* Escondido por padrão */
+    width: 100%; /* Garante que ocupe a largura completa do formulário */
+    box-sizing: border-box;
+}
+
+.feedback-message.success {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724; /* Verde escuro */
+    border: 1px solid #c3e6cb;
+}
+
+.feedback-message.error {
+    background-color: #f8d7da; /* Vermelho claro */
+    color: #721c24; /* Vermelho escuro */
+    border: 1px solid #f5c6cb;
+}
+
+/* Estilos para o Toast */
+.toast {
+    visibility: hidden; /* Escondido por padrão */
+    min-width: 280px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30px; /* Posição na parte inferior da tela */
+    font-size: 16px;
+    opacity: 0; /* Para a animação de fade */
+    transition: opacity 0.5s, visibility 0.5s;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Estilos específicos para tipos de toast */
+.toast.success {
+    background-color: #28a745; /* Verde para sucesso */
+}
+
+.toast.error {
+    background-color: #dc3545; /* Vermelho para erro */
+}
